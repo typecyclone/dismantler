@@ -1,9 +1,11 @@
 {
   "name": "dismantler",
   "version": "1.0.0",
-  "main": "index.js",
   "author": "Rajat Sharma",
   "license": "MIT",
+  "bin": {
+    "dismantler": "index.js"
+  },
   "dependencies": {
     "shamirs-secret-sharing": "^1.0.1"
   },
