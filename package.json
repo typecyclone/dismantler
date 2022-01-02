@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "author": "Rajat Sharma",
   "license": "MIT",
-  "files": [
-    "index.js"
-  ],
   "bin": {
     "dismantler": "index.js"
   },
