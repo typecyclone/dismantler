@@ -1,7 +1,8 @@
 module Main where
 
 import Options.Applicative
-import Prelude (Unit, apply, bind, map, ($), (<>), (>>=))
+
+import Data.Function.Uncurried (runFn2)
 import Data.List (List, toUnfoldable)
 import Effect (Effect)
 import Effect.Class.Console (logShow)
@@ -9,11 +10,12 @@ import Effect.Console (log)
 import Main.Shamir as Shamir
 import Node.Buffer.Immutable as Buffer
 import Node.Encoding as Encoding
+import Prelude (Unit, apply, bind, map, ($), (<>), (>>=))
 
 dismantle :: DismantleOptions -> Effect Unit
 dismantle (DismantleOptions { secret: s, shares: sh, threshold: t }) = do
   let buf = Buffer.fromString s Encoding.Hex
-  shares <- Shamir.dismantle buf sh t
+  shares <- runFn2 Shamir.dismantle buf { shares: sh, threshold: t }
   let strShares = Buffer.toString Encoding.Hex `map` shares
   logShow strShares
 

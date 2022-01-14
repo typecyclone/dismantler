@@ -2,6 +2,8 @@
 , dependencies =
   [ "console"
   , "effect"
+  , "functions"
+  , "js-eval"
   , "lists"
   , "node-buffer"
   , "optparse"

@@ -1,8 +1,12 @@
 module Main.Shamir where
 
-import Effect (Effect)
 import Node.Buffer.Immutable
+import Data.Function.Uncurried (Fn2)
+import Effect (Effect)
+import JSFFI (foreignEval)
 
-foreign import dismantle :: ImmutableBuffer -> Int -> Int -> Effect (Array ImmutableBuffer)
+dismantle :: forall a. Fn2 ImmutableBuffer a (Effect (Array ImmutableBuffer))
+dismantle = foreignEval "(...args) => () => require('shamirs-secret-sharing').split(...args)"
 
-foreign import assemble :: Array String -> Effect ImmutableBuffer
+assemble :: Array String -> Effect ImmutableBuffer
+assemble = foreignEval "(shares) => () => require('shamirs-secret-sharing').combine(shares)"

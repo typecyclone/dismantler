@@ -7,6 +7,7 @@
     "dismantler": "index.js"
   },
   "dependencies": {
+    "purescript-js-eval": "https://github.com/rajatsharma/purescript-js-eval",
     "shamirs-secret-sharing": "^1.0.1"
   },
   "scripts": {
